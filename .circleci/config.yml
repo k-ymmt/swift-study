@@ -10,7 +10,7 @@ jobs:
           git submodule sync
           git submodule
           go get github.com/gohugoio/hugo
-          rm -rf docs/*
+          rm -rf doc/*
           sudo cp /usr/share/zoneinfo/Japan /etc/localtime
           hugo
       - save_cache:
@@ -25,11 +25,11 @@ jobs:
       - restore_cache:
           key: hugo-cache
       - run: |
-          git config --global user.name Kazuki Yamamoto
+          git config --global user.name "Kazuki Yamamoto"
           git config --global user.email account@kymmt.net
           git add doc/
           git commit -m "Update articles"
-          git push git@github.com:k-ymmt/swift-study
+          git push origin ${CIRCLE_BRANCH}
 
 workflows:
   version: 2
