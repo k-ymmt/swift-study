@@ -12,7 +12,7 @@ defaultContentLanguage = "en"
 defaultContentLanguageInSubdir= false
 enableMissingTranslationPlaceholders = false
 
-publishDir="./doc"
+publishDir="./docs"
 
 # [Languages]
 # [Languages.en]
