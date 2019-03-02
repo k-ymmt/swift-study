@@ -10,7 +10,7 @@ jobs:
           git submodule sync
           git submodule update --init
           go get github.com/gohugoio/hugo
-          git clone git://github.com/k-ymmt/swift-study.git public
+          git clone https://github.com/k-ymmt/swift-study.git public
           rm -rf public/*
           sudo cp /usr/share/zoneinfo/Japan /etc/localtime
           hugo
