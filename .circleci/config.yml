@@ -1,0 +1,44 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:latest
+    working_directory: ~/hugo
+    steps:
+      - checkout
+      - run: |
+          git submodule sync
+          git submodule
+          go get github.com/gohugoio/hugo
+          rm -rf docs/*
+          sudo cp /usr/share/zoneinfo/Japan /etc/localtime
+          hugo
+      - save_cache:
+          key: hugo-cache-{{ epoch }}
+          paths:
+            - ~/hugo
+  publish:
+    machine:
+      enabled: true
+    working_directory: ~/hugo
+    steps:
+      - restore_cache:
+          key: hugo-cache
+      - run: |
+          git config --global user.name Kazuki Yamamoto
+          git config --global user.email account@kymmt.net
+          git add doc/
+          git commit -m "Update articles"
+          git push git@github.com:kymmt/swift-study
+
+workflows:
+  version: 2
+  build_and_publish:
+    jobs:
+      - build
+          filters:
+            branches:
+              only: master
+      - publish
+          requires:
+            - build
