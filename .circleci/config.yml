@@ -29,7 +29,7 @@ jobs:
           git config --global user.email account@kymmt.net
           git add doc/
           git commit -m "Update articles"
-          git push git@github.com:kymmt/swift-study
+          git push git@github.com:k-ymmt/swift-study
 
 workflows:
   version: 2
