@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "http://blog.kymmt.net/swift-study"
 
 languageCode = "en-us"
 DefaultContentLanguage = "en"
