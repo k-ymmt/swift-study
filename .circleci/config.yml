@@ -10,27 +10,28 @@ jobs:
           git submodule sync
           git submodule update --init
           go get github.com/gohugoio/hugo
-          rm -rf docs/*
+          git clone https://github.com/k-ymmt/swift-study public
+          rm -rf public/*
           sudo cp /usr/share/zoneinfo/Japan /etc/localtime
           hugo
       - save_cache:
           key: hugo-cache-{{ epoch }}
           paths:
-            - ~/hugo
+            - ~/hugo/public
   publish:
     machine:
       enabled: true
-    working_directory: ~/hugo
+    working_directory: ~/hugo/public
     steps:
       - restore_cache:
           key: hugo-cache
       - run: |
           git config --global user.name "Kazuki Yamamoto"
           git config --global user.email account@kymmt.net
-          git add docs/
+          git add --all
           git diff --cached --exit-code --quiet && exit 0
           git commit -m "Update articles"
-          git push origin ${CIRCLE_BRANCH}
+          git push origin master
 
 workflows:
   version: 2
@@ -39,7 +40,7 @@ workflows:
       - build:
           filters:
             branches:
-              only: master
+              only: develop
       - publish:
           requires:
             - build
