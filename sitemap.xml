@@ -3,17 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://blog.kymmt.net/swift-study/categories/</loc>
+    <loc>https://blog.kymmt.net/swift-study/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://blog.kymmt.net/swift-study/</loc>
+    <loc>https://blog.kymmt.net/swift-study/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://blog.kymmt.net/swift-study/tags/</loc>
+    <loc>https://blog.kymmt.net/swift-study/tags/</loc>
     <priority>0</priority>
   </url>
   
